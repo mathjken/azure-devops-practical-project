@@ -1,11 +1,12 @@
-
-# Azure DevOps Practical Project
+# Azure DevOps CI Practical Project
 
 ## Overview
 
-This project demonstrates a basic Python application with automated testing and Continuous Integration using Azure DevOps.
+This project demonstrates a Python order calculation application developed and managed using Azure DevOps.
 
-The application calculates the total cost of an order using its unit price and quantity. It includes input validation and automated tests written with pytest.
+The application calculates the total cost of an order using its unit price and quantity. It includes input validation to prevent negative values and automated tests written with pytest.
+
+The project demonstrates practical experience with Git, Azure Repos, Azure Boards, Azure Pipelines, feature branching, pull requests and Continuous Integration (CI).
 
 ## Technologies
 
@@ -13,7 +14,9 @@ The application calculates the total cost of an order using its unit price and q
 - pytest
 - Git
 - Azure Repos
+- Azure Boards
 - Azure Pipelines
+- YAML
 
 ## Project Structure
 
@@ -25,6 +28,24 @@ azure-devops-practical-project/
 ├── .gitignore
 ├── README.md
 └── azure-pipelines.yml
+```
+
+## Application Functionality
+
+The application provides an order total calculation function.
+
+It includes validation to reject negative prices and quantities.
+
+Example:
+
+```python
+calculate_total(25.00, 3)
+```
+
+Expected output:
+
+```text
+75.0
 ```
 
 ## Local Setup
@@ -61,29 +82,67 @@ Expected output:
 Order total: £75.00
 ```
 
-## Run Automated Tests
+## Automated Testing
+
+Run the test suite:
 
 ```bash
 pytest -v
 ```
 
-The test suite checks:
+The four automated tests cover:
+
 - Normal order calculations.
 - Zero quantity.
 - Negative price validation.
 - Negative quantity validation.
 
-## Continuous Integration
+All four tests passed in the final Azure Pipelines run.
 
-Azure Pipelines will be configured to install dependencies and execute the automated test suite whenever changes are pushed to the main branch.
+## Azure DevOps CI Workflow
 
-## Project Objective
+The project uses Azure Pipelines to automate testing.
 
-To gain practical experience with Azure DevOps, source control management, automated testing, CI pipelines and work item tracking.
+The pipeline:
 
+1. Uses a Microsoft-hosted Ubuntu agent.
+2. Sets up Python 3.12.
+3. Installs project dependencies.
+4. Executes the pytest test suite.
 
-## Branching Strategy
+The pipeline runs when changes are pushed to the `main` branch.
+
+## Branching and Pull Request Strategy
 
 Development changes are made in feature branches and submitted through pull requests.
-The main branch is protected by build validation, requiring successful automated tests
-before pull requests can be completed.
+
+The `main` branch has the following policies configured:
+
+- Required Python CI build validation.
+- Automatic pipeline execution for pull requests.
+- Optional linked-work-item checking.
+
+The pull request was successfully validated, approved and merged into `main`. A subsequent pipeline run also completed successfully, with all four automated tests passing.
+
+## Azure Boards
+
+Azure Boards was used to track the project work through issues and the Kanban board.
+
+Work items were also linked to relevant development evidence, including a commit and a successful pipeline build.
+
+## Key Learning Outcomes
+
+This project provided practical experience in:
+
+- Managing source code with Git and Azure Repos.
+- Creating and working with feature branches.
+- Managing work items with Azure Boards.
+- Configuring YAML-based CI pipelines.
+- Automating Python tests with pytest.
+- Configuring branch protection and build validation.
+- Creating, reviewing and completing pull requests.
+- Verifying successful post-merge CI execution.
+
+## Project Scope
+
+This is a CI-focused practical project. It demonstrates automated testing and source-control workflows; it does not include a production deployment pipeline.
