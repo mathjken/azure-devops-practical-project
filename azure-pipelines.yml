@@ -17,6 +17,15 @@ steps:
     displayName: 'Install dependencies'
 
   - script: |
-      python -m pytest -v
+      python -m pytest -v --junitxml=test-results.xml
     displayName: 'Run automated tests'
+
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFormat: 'JUnit'
+      testResultsFiles: 'test-results.xml'
+      failTaskOnFailedTests: true
+      testRunTitle: 'Python Order Calculation Tests'
+    condition: succeededOrFailed()
+    displayName: 'Publish test results'
 
