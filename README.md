@@ -146,3 +146,17 @@ This project provided practical experience in:
 ## Project Scope
 
 This is a CI-focused practical project. It demonstrates automated testing and source-control workflows; it does not include a production deployment pipeline.
+
+## Project Evidence
+
+Screenshots documenting the Azure DevOps implementation are available in [`docs/evidence/`](docs/evidence/).
+
+The evidence includes:
+
+- Azure Repos project structure.
+- Azure Pipelines configuration and successful test runs.
+- Azure Boards work items, backlog and Kanban board.
+- Commit and build traceability.
+- Main branch policies.
+- Pull request validation and successful merge.
+- Post-merge CI validation with all four tests passing.
