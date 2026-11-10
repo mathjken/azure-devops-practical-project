@@ -81,3 +81,9 @@ Azure Pipelines will be configured to install dependencies and execute the autom
 
 To gain practical experience with Azure DevOps, source control management, automated testing, CI pipelines and work item tracking.
 
+
+## Branching Strategy
+
+Development changes are made in feature branches and submitted through pull requests.
+The main branch is protected by build validation, requiring successful automated tests
+before pull requests can be completed.
